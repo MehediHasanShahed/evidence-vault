@@ -36,7 +36,7 @@ function VaultPageContent() {
   // Read filters from URL
   const docTypeFilter = searchParams.get("docType") || "";
   const statusFilter = searchParams.get("status") || "";
-  const expiryFilter = searchParams.get("expiry") || "all";
+  const expiryFilter = searchParams.get("expiry") || "";
   const searchQuery = searchParams.get("search") || "";
 
   const [selectedIds, setSelectedIds] = useState([]);
@@ -68,7 +68,7 @@ function VaultPageContent() {
       if (statusFilter && item.status !== statusFilter) return false;
 
       // Expiry filter
-      if (expiryFilter !== "all") {
+      if (expiryFilter !== "") {
         if (!item.expiry) return false;
         const daysUntilExpiry = differenceInDays(
           parseISO(item.expiry),
@@ -253,7 +253,7 @@ function VaultPageContent() {
             label="Expiry"
             onChange={(e) => updateFilters({ expiry: e.target.value })}
           >
-            <MenuItem value="all">All</MenuItem>
+            <MenuItem value="">All</MenuItem>
             <MenuItem value="expired">Expired</MenuItem>
             <MenuItem value="expiring-soon">Expiring Soon</MenuItem>
           </Select>
