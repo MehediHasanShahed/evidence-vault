@@ -57,6 +57,7 @@ A modern, responsive React/Next.js application demonstrating the "Phase A" facto
 - `app/theme.js` & `app/providers.js`: Theme configuration and context providers.
 
 
+---
 ## Screenshots
 |----------------------|
 | ### Evidence Vault |
@@ -74,3 +75,4 @@ A modern, responsive React/Next.js application demonstrating the "Phase A" facto
 |  <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/e65253af-5611-473c-8d2d-2d0a82405b5b" /> |
 |  <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/ee109430-0b04-4551-b082-b93590f52597" /> |
 
+---
