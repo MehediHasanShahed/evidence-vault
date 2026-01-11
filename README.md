@@ -2,6 +2,8 @@
 
 A modern, responsive React/Next.js application demonstrating the "Phase A" factory user experience for SentryLink Comply. This project showcases a compliance evidence management system featuring an evidence vault, detailed version tracking, and a buyer request fulfillment workflow.
 
+---
+
 ## Features
 
 - **Evidence Vault**: Comprehensive list view of compliance documents with sorting, filtering (Doc Type, Status, Expiry), and bulk actions.
@@ -9,6 +11,8 @@ A modern, responsive React/Next.js application demonstrating the "Phase A" facto
 - **Buyer Request Workflow**: Manage and fulfill incoming requests from buyers, either by selecting existing evidence or uploading new versions.
 - **Theme Support**: Fully integrated Dark and Light modes with persistent user preference (cookie/localStorage sync) to prevent hydration mismatches.
 - **Responsive Design**: Built with Material UI (MUI) for a consistent and accessible table, modal, and layout experience across devices.
+
+---
 
 ## Technology Stack
 
@@ -18,12 +22,16 @@ A modern, responsive React/Next.js application demonstrating the "Phase A" facto
 - **Icons**: MUI Icons Material
 - **Date Handling**: date-fns
 
+---
+
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js (v18 or higher recommended)
 - npm
+
+---
 
 ### Installation
 
@@ -47,6 +55,8 @@ A modern, responsive React/Next.js application demonstrating the "Phase A" facto
    ```
 
 4. Open [http://localhost:3000](http://localhost:3000) with your browser.
+
+---
 
 ## Project Structure
 
@@ -75,4 +85,3 @@ A modern, responsive React/Next.js application demonstrating the "Phase A" facto
 |  <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/e65253af-5611-473c-8d2d-2d0a82405b5b" /> |
 |  <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/ee109430-0b04-4551-b082-b93590f52597" /> |
 
----
