@@ -60,15 +60,15 @@ A modern, responsive React/Next.js application demonstrating the "Phase A" facto
 ---
 ## Screenshots
 |----------------------|
-| ### Evidence Vault |
+| Evidence Vault |
 |   <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/984a0883-7755-4842-86f0-9bcf4840af1b" /> |
 |   <img width="1879" height="995" alt="image" src="https://github.com/user-attachments/assets/0e01f4fe-dd4a-454b-a011-d151ddc44a74" /> |
 |   <img width="1879" height="992" alt="image" src="https://github.com/user-attachments/assets/80e19211-2b15-48b4-9aa8-e9fb87c0245f" /> |
 |   <img width="1877" height="993" alt="image" src="https://github.com/user-attachments/assets/6a6a3e03-5a8d-4e3a-a8e9-6cab32ae8b24" /> |
-| ### Evidence Detail |
+| Evidence Detail |
 |   <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/cf88033e-1987-4fe9-a629-80a13a56fb74" /> |
 |   <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/ecfb5bcd-adfd-451d-bbd2-c1edc39e1078" /> |
-| ### Buyer Requests |
+| Buyer Requests |
 |  <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/cd9852ff-2c2a-4871-8e3b-e6c2cf530d9c" /> |
 |  <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/3f7b1d36-b184-4cf8-a38b-3bad2adbfcb5" /> |
 |  <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/02307922-cd7f-468d-86b8-bd1024ae6d1d" /> |
