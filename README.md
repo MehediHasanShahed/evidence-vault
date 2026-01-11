@@ -85,3 +85,23 @@ A modern, responsive React/Next.js application demonstrating the "Phase A" facto
 |  <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/e65253af-5611-473c-8d2d-2d0a82405b5b" /> |
 |  <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/ee109430-0b04-4551-b082-b93590f52597" /> |
 
+## Screenshot
+| Finance Tracker Interface |
+|----------------------|
+| Landing Page |
+| <img width="1878" height="923" alt="Opera Snapshot_2025-11-25_012042_localhost" src="https://github.com/user-attachments/assets/a9f28e7e-370f-4327-854e-65d9cdf32b69" /> |
+| Dashboard |
+| <img width="1878" height="923" alt="Opera Snapshot_2025-11-25_012221_localhost" src="https://github.com/user-attachments/assets/80682cc1-4a62-4017-a3af-c82df7e2fc8b" /> |
+| <img width="1878" height="923" alt="Opera Snapshot_2025-11-25_012233_localhost" src="https://github.com/user-attachments/assets/eb173c99-088d-4d29-bd6d-4d93b1e39807" /> |
+| Create Transactions |
+| <img width="1878" height="923" alt="Opera Snapshot_2025-11-25_012129_localhost" src="https://github.com/user-attachments/assets/78c67c34-0299-4b70-aa8f-22bdbb2b77d4" /> |
+| Accounts |
+| <img width="1878" height="923" alt="Opera Snapshot_2025-11-25_012207_localhost" src="https://github.com/user-attachments/assets/5d99367f-8bf8-4136-99b6-cf963725c0ee" /> |
+| <img width="1878" height="923" alt="Opera Snapshot_2025-11-25_012153_localhost" src="https://github.com/user-attachments/assets/7774aabc-a64f-44e0-b541-82c02f0be17a" /> |
+| Budget Alert Email |
+| <img width="1552" height="771" alt="Opera Snapshot_2025-11-25_014432_mail google com" src="https://github.com/user-attachments/assets/18887a08-0b54-4f21-8a5c-ba4cfae38846" /> |
+| Monthly Report Email |
+| <img width="1566" height="805" alt="Opera Snapshot_2025-11-25_015036_mail google com" src="https://github.com/user-attachments/assets/a5ead1b3-a95d-453b-914b-12b272f9b844" /> |
+| <img width="1563" height="806" alt="Opera Snapshot_2025-11-25_015051_mail google com" src="https://github.com/user-attachments/assets/4f015241-3f5b-49fb-a5f0-776392267954" /> |
+| <img width="1573" height="798" alt="Opera Snapshot_2025-11-25_015111_mail google com" src="https://github.com/user-attachments/assets/1d9f02d3-242c-45a1-b2d0-2b7e398471fb" /> |
+
