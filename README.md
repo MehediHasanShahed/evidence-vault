@@ -71,7 +71,7 @@ A modern, responsive React/Next.js application demonstrating the "Phase A" facto
 ## Screenshots
 | SentryLink Comply - Evidence Vault UI |
 |----------------------|
-| Evidence Vault |
+| <div align="center"><strong>Evidence Vault</strong></div> |
 |----------------------|
 | <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/984a0883-7755-4842-86f0-9bcf4840af1b" /> |
 | <img width="1879" height="995" alt="image" src="https://github.com/user-attachments/assets/0e01f4fe-dd4a-454b-a011-d151ddc44a74" /> |
