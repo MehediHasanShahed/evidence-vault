@@ -75,8 +75,8 @@ A modern, responsive React/Next.js application demonstrating the "Phase A" facto
 | <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/02307922-cd7f-468d-86b8-bd1024ae6d1d" /> |
 | <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/e65253af-5611-473c-8d2d-2d0a82405b5b" /> |
 | <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/ee109430-0b04-4551-b082-b93590f52597" /> |
-| <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/f96d45c8-ab26-4ebe-992d-166d9bf4c9d2" /> |
 | <div align="center"><strong>After BB updates</strong></div> 
+| <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/f96d45c8-ab26-4ebe-992d-166d9bf4c9d2" /> |
 | <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/52ad4ccf-e619-4e42-bf68-a29fdedfd740" /> |
 | <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/ecdea09e-3e16-4ca7-81fd-9ee1c38f177a" /> |
 | <img width="1878" height="923" alt="image" src="https://github.com/user-attachments/assets/85cb1f25-8174-4541-83d8-ae741381e20b" /> |
