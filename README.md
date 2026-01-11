@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SentryLink Comply - Evidence Vault UI
+
+A modern, responsive React/Next.js application demonstrating the "Phase A" factory user experience for SentryLink Comply. This project showcases a compliance evidence management system featuring an evidence vault, detailed version tracking, and a buyer request fulfillment workflow.
+
+## Features
+
+- **Evidence Vault**: Comprehensive list view of compliance documents with sorting, filtering (Doc Type, Status, Expiry), and bulk actions.
+- **Evidence Detail**: Dedicated view for document metadata and version history.
+- **Buyer Request Workflow**: Manage and fulfill incoming requests from buyers, either by selecting existing evidence or uploading new versions.
+- **Theme Support**: Fully integrated Dark and Light modes with persistent user preference (cookie/localStorage sync) to prevent hydration mismatches.
+- **Responsive Design**: Built with Material UI (MUI) for a consistent and accessible table, modal, and layout experience across devices.
+
+## Technology Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **UI Component Library**: [Material UI (MUI) v6](https://mui.com/)
+- **Styling**: Emotion (MUI default) + Custom Theme Context
+- **Icons**: MUI Icons Material
+- **Date Handling**: date-fns
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js (v18 or higher recommended)
+- npm
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. Clone the repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   git clone https://github.com/your-username/evidence-vault.git
+   cd evidence-vault
+   ```
 
-## Learn More
+2. Install dependencies:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Run the development server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+4. Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `app/vault`: Evidence Vault list screen.
+- `app/vault/[id]`: Evidence Detail screen with version history.
+- `app/requests`: Buyer Requests to-do list screen.
+- `app/components`: Reusable UI components (Sidebar, DataTable, StatusChip, Modals).
+- `app/theme.js` & `app/providers.js`: Theme configuration and context providers.
+
+## Screenshots
+
+<!-- Add screenshots here later -->
+
+### Evidence Vault (Dark Mode)
+
+<!-- ![Evidence Vault Dark](path/to/screenshot1.png) -->
+
+### Evidence Detail (Light Mode)
+
+<!-- ![Evidence Detail Light](path/to/screenshot2.png) -->
+
+### Buyer Requests
+
+<!-- ![Buyer Requests](path/to/screenshot3.png) -->
