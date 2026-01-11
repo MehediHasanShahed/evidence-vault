@@ -1,55 +1,109 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import AddIcon from "@mui/icons-material/Add";
+import RefreshIcon from "@mui/icons-material/Refresh";
 import { format, parseISO, differenceInDays } from "date-fns";
 
 import DataTable from "../components/DataTable";
 import StatusChip from "../components/StatusChip";
 import FulfillModal from "../components/FulfillModal";
-import {
-  buyerRequests as initialRequests,
-  evidenceItems,
-} from "../data/mockData";
+import CreateRequestModal from "../components/CreateRequestModal";
+import { evidenceItems } from "../data/mockData";
 
 export default function RequestsPage() {
-  const [requests, setRequests] = useState(initialRequests);
+  const [requests, setRequests] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [fulfillModalOpen, setFulfillModalOpen] = useState(false);
+  const [createModalOpen, setCreateModalOpen] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
+
+  const fetchRequests = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("/api/requests");
+      const result = await response.json();
+      setRequests(result.data || []);
+    } catch (error) {
+      console.error("Failed to fetch requests:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchRequests();
+  }, []);
 
   const handleOpenFulfill = (request) => {
     setSelectedRequest(request);
     setFulfillModalOpen(true);
   };
 
-  const handleFulfill = (data) => {
-    setRequests((prev) =>
-      prev.map((req) =>
-        req.id === data.requestId
-          ? {
-              ...req,
-              status: "fulfilled",
-              fulfilledWith: data.evidenceId,
-              fulfilledDate: format(new Date(), "yyyy-MM-dd"),
-            }
-          : req
-      )
-    );
+  const handleFulfill = async (data) => {
+    try {
+      const response = await fetch(`/api/requests/${data.requestId}/fulfill`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          evidenceId: data.evidenceId,
+          notes: data.notes || "Fulfilled via UI",
+          newEvidence: data.newEvidence,
+        }),
+      });
 
-    const evidenceName =
-      data.fulfillType === "existing"
-        ? evidenceItems.find((e) => e.id === data.evidenceId)?.name
-        : data.newEvidence?.name;
+      const result = await response.json();
 
-    setSnackbarMessage(`Request fulfilled with "${evidenceName}"`);
-    setSnackbarOpen(true);
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to fulfill request");
+      }
+
+      // Update local state
+      setRequests((prev) =>
+        prev.map((req) => (req.id === result.data.id ? result.data : req))
+      );
+
+      setSnackbarMessage(`Request fulfilled successfully!`);
+      setSnackbarOpen(true);
+    } catch (err) {
+      console.error("Fulfillment error:", err);
+      setSnackbarMessage(`Error: ${err.message}`);
+      setSnackbarOpen(true);
+    }
+  };
+
+  const handleCheckStatus = async (id) => {
+    try {
+      const response = await fetch(`/api/requests/${id}`);
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Request not found");
+      }
+
+      setSnackbarMessage(
+        `Status for ${result.data.docType}: ${result.data.status.toUpperCase()}`
+      );
+      setSnackbarOpen(true);
+      // Sync local state if changed
+      setRequests((prev) =>
+        prev.map((req) => (req.id === result.data.id ? result.data : req))
+      );
+    } catch (error) {
+      console.error("Check status error:", error);
+      setSnackbarMessage(`Error: ${error.message}`);
+      setSnackbarOpen(true);
+    }
   };
 
   const columns = [
@@ -105,7 +159,8 @@ export default function RequestsPage() {
         <Typography
           variant="body2"
           color="text.secondary"
-          sx={{ maxWidth: 300 }}
+          sx={{ maxWidth: 200 }}
+          noWrap
         >
           {value}
         </Typography>
@@ -118,26 +173,44 @@ export default function RequestsPage() {
       render: (_, row) => {
         if (row.status === "fulfilled") {
           return (
-            <Chip
-              icon={<CheckCircleIcon />}
-              label="Fulfilled"
-              color="success"
-              size="small"
-              variant="outlined"
-            />
+            <Stack direction="row" spacing={1} alignItems="center">
+              <Chip
+                icon={<CheckCircleIcon />}
+                label="Fulfilled"
+                color="success"
+                size="small"
+                variant="outlined"
+              />
+              <Button
+                size="small"
+                variant="text"
+                onClick={() => handleCheckStatus(row.id)}
+              >
+                Check Status
+              </Button>
+            </Stack>
           );
         }
         return (
-          <Button
-            variant="contained"
-            size="small"
-            onClick={(e) => {
-              e.stopPropagation();
-              handleOpenFulfill(row);
-            }}
-          >
-            Fulfill
-          </Button>
+          <Stack direction="row" spacing={1}>
+            <Button
+              variant="contained"
+              size="small"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleOpenFulfill(row);
+              }}
+            >
+              Fulfill
+            </Button>
+            <Button
+              size="small"
+              variant="text"
+              onClick={() => handleCheckStatus(row.id)}
+            >
+              Check
+            </Button>
+          </Stack>
         );
       },
     },
@@ -149,13 +222,40 @@ export default function RequestsPage() {
   return (
     <Box>
       {/* Header */}
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" gutterBottom>
-          Buyer Requests
-        </Typography>
-        <Typography color="text.secondary">
-          Fulfill compliance document requests from your buyers
-        </Typography>
+      <Box
+        sx={{
+          mb: 4,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+        }}
+      >
+        <Box>
+          <Typography variant="h4" gutterBottom>
+            Buyer Requests
+          </Typography>
+          <Typography color="text.secondary">
+            Fulfill compliance document requests from your buyers
+          </Typography>
+        </Box>
+        <Stack direction="row" spacing={2}>
+          <Button
+            variant="outlined"
+            startIcon={<RefreshIcon />}
+            onClick={fetchRequests}
+            disabled={loading}
+          >
+            Refresh
+          </Button>
+          <Button
+            variant="contained"
+            startIcon={<AddIcon />}
+            color="secondary"
+            onClick={() => setCreateModalOpen(true)}
+          >
+            New Request
+          </Button>
+        </Stack>
       </Box>
 
       {/* Stats */}
@@ -176,7 +276,23 @@ export default function RequestsPage() {
       </Box>
 
       {/* Table */}
-      <DataTable columns={columns} data={requests} getRowId={(row) => row.id} />
+      <DataTable
+        columns={columns}
+        data={requests}
+        getRowId={(row) => row.id}
+        loading={loading}
+      />
+
+      {/* Create Request Modal (Buyer View) */}
+      <CreateRequestModal
+        open={createModalOpen}
+        onClose={() => setCreateModalOpen(false)}
+        onCreate={(newReq) => {
+          setRequests((prev) => [newReq, ...prev]);
+          setSnackbarMessage(`Buyer created request: ${newReq.docType}`);
+          setSnackbarOpen(true);
+        }}
+      />
 
       {/* Fulfill Modal */}
       <FulfillModal

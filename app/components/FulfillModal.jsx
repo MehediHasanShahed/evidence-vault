@@ -58,10 +58,16 @@ export default function FulfillModal({ open, onClose, request, onFulfill }) {
     onClose();
   };
 
-  // Filter evidence items that match the required evidence type
-  const matchingEvidence = evidenceItems.filter(
-    (e) => e.docType === request?.requiredEvidence || e.status === "active"
-  );
+  // Show all evidence items, but prioritize matching ones first
+  const matchingEvidence = [...evidenceItems].sort((a, b) => {
+    const aMatches =
+      a.docType === request?.requiredEvidence || a.status === "active";
+    const bMatches =
+      b.docType === request?.requiredEvidence || b.status === "active";
+    if (aMatches && !bMatches) return -1;
+    if (!aMatches && bMatches) return 1;
+    return 0;
+  });
 
   return (
     <Modal
@@ -83,7 +89,16 @@ export default function FulfillModal({ open, onClose, request, onFulfill }) {
       {request && (
         <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
           {/* Request Info */}
-          <Box sx={(theme) => ({ bgcolor: theme.palette.mode === 'light' ? theme.palette.grey[100] : theme.palette.background.paper, p: 2, borderRadius: 1 })}>
+          <Box
+            sx={(theme) => ({
+              bgcolor:
+                theme.palette.mode === "light"
+                  ? theme.palette.grey[100]
+                  : theme.palette.background.paper,
+              p: 2,
+              borderRadius: 1,
+            })}
+          >
             <Typography variant="subtitle2" color="text.secondary" gutterBottom>
               Request Details
             </Typography>
